@@ -7,7 +7,7 @@ from pprint import pprint
 import Adafruit_BMP.BMP085 as BMP
 from m2x.client import M2XClient
 
-## using M2X client library sample
+## M2X python client library sample
 if __name__ == '__main__':
     cur_dir = os.path.abspath(os.path.dirname(__file__))
     os.chdir(cur_dir)
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     temp = sensor.read_temperature()
     pres = sensor.read_pressure()
     print('Temperature: %lf' % temp)
-    print('Temperature: %lf' % pres)
+    print('Pressure: %lf' % pres)
     stream_temp.add_value(temp)
     print('Status: %d' % client.last_response.status)
     stream_pres.add_value(pres)
