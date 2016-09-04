@@ -9,14 +9,14 @@ import pycurl
 from pprint import pprint
 import Adafruit_BMP.BMP085 as BMP
 
-## using pycurl sample
+## cURL python client(pycurl) sample
 if __name__ == '__main__':
     cur_dir = os.path.abspath(os.path.dirname(__file__))
     os.chdir(cur_dir)
-    sensor = BMP.BMP085() ## you can read BMP180 data
+    
+    sensor = BMP.BMP085() ## you can access BMP180 sensor
     temp = sensor.read_temperature()
 
-    # BMP180 read data tests
     print('Temp = {0:0.2f} *C'.format(sensor.read_temperature()))
     print('Temp = {0:0.2f} *C'.format(sensor.read_raw_temp()))
     print('Pressure = {0:0.2f} Pa'.format(sensor.read_pressure()))
