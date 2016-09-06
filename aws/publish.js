@@ -16,4 +16,5 @@ device.on('connect', function() {
   console.log('connect');
   device.publish(conf.topic, 'test message');
   console.log('published');
+  return;
 });
