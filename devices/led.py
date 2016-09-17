@@ -20,13 +20,17 @@ if __name__ == '__main__':
         time.sleep(0.2)
 
 
-    pwm = GPIO.PWM(GPIO_OUT, 75)
-    pwm.start(50)
-    time.sleep(2.0)
-    pwm.ChangeDutyCycle(10)
-    time.sleep(2.0)
-    pwm.stop()
+    pwm = GPIO.PWM(GPIO_OUT, 50)
+    pwm.start(0)
+    for i in range(100):
+        pwm.ChangeDutyCycle(i)
+        time.sleep(0.02)
 
+    for i in range(100):
+        pwm.ChangeDutyCycle(100 - i)
+        time.sleep(0.02)
+    
+    pwm.stop()
     GPIO.cleanup()
 
 
