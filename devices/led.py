@@ -20,10 +20,11 @@ if __name__ == '__main__':
         time.sleep(0.2)
 
 
-    pwm = GPIO.PWM(GPIO_OUT, 50)
+    ## using Pulse-Width Modulation
+    pwm = GPIO.PWM(GPIO_OUT, 50) # 50Hz
     pwm.start(0)
     for i in range(100):
-        pwm.ChangeDutyCycle(i)
+        pwm.ChangeDutyCycle(i) # 0 - 100
         time.sleep(0.02)
 
     for i in range(100):
