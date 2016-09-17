@@ -9,30 +9,34 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(GPIO_OUT, GPIO.OUT)
 
-    for i in range(10):
-        if i%2 == 0:
-            print('%d: ON' % (i,))
-            GPIO.output(GPIO_OUT, True)
-        else:
-            print('%d: OFF' % (i,))
-            GPIO.output(GPIO_OUT, False)
-
+    LED_UP = True
+    for i in range(6):
+        GPIO.output(GPIO_OUT, LED_UP)
+        LED_UP = not LED_UP
         time.sleep(0.2)
 
 
-    ## using Pulse-Width Modulation
+    print('using Pulse-Width Modulation')
     pwm = GPIO.PWM(GPIO_OUT, 50) # 50Hz
     pwm.start(0)
-    for i in range(100):
-        pwm.ChangeDutyCycle(i) # 0 - 100
-        time.sleep(0.02)
+    while True:
+        try:
+            for i in range(100):
+                pwm.ChangeDutyCycle(i) # 0 - 100
+                time.sleep(0.02)
 
-    for i in range(100):
-        pwm.ChangeDutyCycle(100 - i)
-        time.sleep(0.02)
+            for i in range(100):
+                pwm.ChangeDutyCycle(100 - i)
+                time.sleep(0.02)
+
+        except KeyboardInterrupt as e:
+            pwm.stop()
+            break
     
-    pwm.stop()
     GPIO.cleanup()
+    print('exit')
+    
+    
 
 
         
