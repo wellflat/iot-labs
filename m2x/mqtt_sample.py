@@ -62,9 +62,9 @@ if __name__ == '__main__':
 
 
     ## todo implement
-    # for i in range(3):
-    #     print(client.publish(topic, request_data))
-    #     time.sleep(0.2)
+    for i in range(3):
+        print(client.publish(topic, request_data))
+        time.sleep(0.2)
 
     client.disconnect()
         
