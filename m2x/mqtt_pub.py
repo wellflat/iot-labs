@@ -5,6 +5,7 @@ import os
 import datetime
 import json
 import time
+import uuid
 import yaml
 from pprint import pprint
 import paho.mqtt.client as mqtt
@@ -37,35 +38,33 @@ if __name__ == '__main__':
     def on_connect(client, userdata, flags, rc):
         print("Connected with result code " + str(rc))
         client.subscribe('m2x/' + api_key + '/responses')
+        
+        msg_id = uuid.uuid4().hex
+        data = {
+            "id": msg_id,
+            "method": "PUT",
+            "resource": "/v2/devices/" + device_id + "/streams/temperature/value",
+            "agent": "M2X-Demo-Client/0.0.1",
+            "body": {
+                "value": temp
+            }
+        }
+        request_data = json.dumps(data)
+        client.publish(topic, request_data)
+    
+
+    def on_publish(client, userdata, mid):
+        print('published message: ' + str(mid))
+        #client.disconnect()
 
     def on_message(client, userdata, msg):
         print(msg.topic + " " + str(msg.payload))
+        client.disconnect()
 
     client = mqtt.Client(protocol=mqtt.MQTTv311)
     client.on_connect = on_connect
+    client.on_publish = on_publish
     client.on_message = on_message
     client.connect(mqtt_host, port=mqtt_port, keepalive=mqtt_keepalive)
+    client.username_pw_set(api_key)
     client.loop_forever()
-
-    timestamp = datetime.datetime.now().isoformat()
-
-    data = {
-        "id": "random id is here",
-        "method": "PUT",
-        "resource": "/v2/devices/" + device_id + "/streams/temperature/value",
-        "agent": "M2X-Demo-Client/0.0.1",
-        "body": {
-            "value": temp
-        }
-    }
-    request_data = json.dumps(data)
-
-
-    ## todo implement
-    for i in range(3):
-        print(client.publish(topic, request_data))
-        time.sleep(0.2)
-
-    client.disconnect()
-        
-
