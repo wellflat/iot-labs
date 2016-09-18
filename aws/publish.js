@@ -1,10 +1,10 @@
 
-var awsIot = require('aws-iot-device-sdk');
+var client = require('aws-iot-device-sdk');
 var fs = require('fs');
 
 var conf = JSON.parse(fs.readFileSync('cert.json', 'utf8'));
 
-var device = awsIot.device({
+var device = client.device({
   region: conf.region,
   clientId: conf.clientId,
   privateKey: conf.privateKey,
@@ -13,8 +13,8 @@ var device = awsIot.device({
 });
 
 device.on('connect', function() {
-  console.log('connect');
+  console.log('connected.');
   device.publish(conf.topic, 'test message');
-  console.log('published');
+  console.log('published message.');
   return;
 });
