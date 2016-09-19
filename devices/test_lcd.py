@@ -25,19 +25,14 @@ lcd = Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
                        lcd_columns, lcd_rows, lcd_backlight)
 try:
     lcd.clear()
-    sleep(1)
     lcd.message('hello, world')
     sleep(10)
     lcd.clear()
-    sleep(1)
 except KeyboardInterrupt as e:
     lcd.message('good bye')
-    sleep(1)
     lcd.clear()
     sleep(1)
 
-# sleep(3)
-# lcd.clear()
 
 # cmd = "ip addr show eth0 | grep inet | awk '{print $2}' | cut -d/ -f1"
 
