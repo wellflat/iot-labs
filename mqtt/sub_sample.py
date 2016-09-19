@@ -7,7 +7,7 @@ import paho.mqtt.client as mqtt
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    topic = 'topic/test'
+    topic = 'topic/test:raspi'
     client.subscribe(topic)
 
 def on_message(client, userdata, message):
@@ -15,7 +15,7 @@ def on_message(client, userdata, message):
 
 if __name__ == '__main__':
     try:
-        client = mqtt.Client()
+        client = mqtt.Client(protocol=mqtt.MQTTv311)
         client.on_connect = on_connect
         client.on_message = on_message
         client.connect("test.mosquitto.org", 1883)

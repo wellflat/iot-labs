@@ -54,7 +54,7 @@ if __name__ == '__main__':
     
 
     def on_publish(client, userdata, mid):
-        print('published message: ' + str(mid))
+        print('published message: %d' % mid)
         #client.disconnect()
 
     def on_message(client, userdata, msg):
@@ -65,6 +65,6 @@ if __name__ == '__main__':
     client.on_connect = on_connect
     client.on_publish = on_publish
     client.on_message = on_message
-    client.connect(mqtt_host, port=mqtt_port, keepalive=mqtt_keepalive)
     client.username_pw_set(api_key)
+    client.connect(mqtt_host, port=mqtt_port, keepalive=mqtt_keepalive)
     client.loop_forever()
