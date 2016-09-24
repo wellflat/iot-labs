@@ -12,10 +12,8 @@ def set_parameters(camera):
     camera.contrast = 0
     camera.saturation = 0
     camera.sharpness = 0
-    camera.iso = 100  ## 0:auto
-    #camera.iso = 0
-    camera.shutter_speed = int(1 / 20 * 1000 * 1000)  ## microseconds, 0:auto
-    #camera.shutter_speed = 0
+    camera.iso = 0
+    camera.video_stabilization = True
     camera.exposure_compensation = 0
     camera.exposure_mode = 'auto'
     camera.meter_mode = 'average'
@@ -28,16 +26,23 @@ def set_parameters(camera):
     camera.crop = (0.0, 0.0, 1.0, 1.0)
     now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
     camera.annotate_text = now
-    print(dir(camera))
 
+
+def preview(camera, seconds):
+    camera.start_preview()
+    sleep(seconds)
+    camera.stop_preview()
 
 if __name__ == '__main__':
     try:
         camera = picamera.PiCamera()
         set_parameters(camera)
-        print('capturing still')
-        camera.capture('html/image.jpg')
+        #preview(camera, 10)
+        
+        print('recording video')
+        camera.start_recording('html/video.h264')
+        sleep(10)
+        camera.stop_recording()
     
     finally:
         camera.close()
-    

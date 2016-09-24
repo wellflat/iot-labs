@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sudo raspistill -o html/image.jpg 
+DST_DIR=/var/www/html
+sudo raspistill -o $DST_DIR/image.jpg 
