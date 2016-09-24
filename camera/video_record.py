@@ -4,16 +4,17 @@
 from datetime import datetime
 from time import sleep
 import picamera
+from fractions import Fraction
 
 def set_parameters(camera):
-    #camera.resolution = (3280, 2464)
-    camera.resolution = (1600, 1200)
+    camera.resolution = (1920, 1080)
     camera.brightness = 50
     camera.contrast = 0
     camera.saturation = 0
     camera.sharpness = 0
     camera.iso = 0
-    camera.video_stabilization = True
+    camera.framerate = Fraction(30, 1)
+    camera.video_stabilization = False
     camera.exposure_compensation = 0
     camera.exposure_mode = 'auto'
     camera.meter_mode = 'average'
