@@ -1,3 +1,19 @@
 #!/bin/sh
 
-sudo raspivid -t 10000 -o video.mp4
+WIDTH=1280
+HEIGHT=720  ## HD
+BITRATE=20000000  ## 20Mbps
+#TIME_DELAY=20000
+TIME_DELAY=3600000  ## 1 hour
+SHARP=0
+CONTRAST=0
+BRIGHT=50
+AWB=auto
+# EXPOSURE=auto
+# METERING=average
+EXPOSURE=backlight
+METERING=backlit
+DST_DIR=/var/www/html
+VIDEO_NAME=video.h264
+
+sudo raspivid -v -w $WIDTH -h $HEIGHT -b $BITRATE -sh $SHARP -co $CONTRAST -br $BRIGHT -awb $AWB -ex $EXPOSURE -mm $METERING -t $TIME_DELAY -o $DST_DIR/$VIDEO_NAME
