@@ -1,8 +1,6 @@
 # iot-labs   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 IoT sample codes
 
- [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-
 ## IoT cloud service samples
 - AWS IoT (AWS IoT Device SDK)
 - AT&T M2X (HTTP/MQTT client)
