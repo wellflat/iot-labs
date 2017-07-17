@@ -1,13 +1,18 @@
-# iot-samples
+# iot-labs
 IoT sample codes
 
-## IoT cloud service test
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## IoT cloud service samples
 - AWS IoT (AWS IoT Device SDK)
 - AT&T M2X (HTTP/MQTT client)
 - etc.
 
-## Camera module test
+## camera module samples
 - [The Raspberry Pi camera module v2](https://www.raspberrypi.org/products/camera-module-v2/)
 
-## sensor module libraries test
+## sensor module libraries samples
 - [Adafruit Industries libraries](https://github.com/adafruit)
+
+## networking samples
+- MQTT
