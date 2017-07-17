@@ -1,7 +1,7 @@
 # iot-labs
 IoT sample codes
 
- [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ## IoT cloud service samples
 - AWS IoT (AWS IoT Device SDK)
